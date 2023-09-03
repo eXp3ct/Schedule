@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  expect.schedule.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  expect.schedule.auth:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+

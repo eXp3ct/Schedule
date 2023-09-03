@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expect.Schedule.Web", "Expect.Schedule.Web\Expect.Schedule.Web.csproj", "{FADD600E-ED11-4CC6-8F49-A8BB85A917CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expect.Schedule.Domain", "Expect.Schedule.Domain\Expect.Schedule.Domain.csproj", "{CD00ADF1-27B3-434C-A37E-51367D3B6899}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expect.Schedule.Auth", "Expect.Schedule.Auth\Expect.Schedule.Auth.csproj", "{637FA983-1192-448F-9C77-F27F8BCE9C5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expect.Schedule.Data", "Expect.Schedule.Data\Expect.Schedule.Data.csproj", "{7ADEB0BA-74BA-4D9C-A36A-B234861F3597}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expect.Schedule.ScheduleService", "Expect.Schedule.ScheduleService\Expect.Schedule.ScheduleService.csproj", "{331CA065-7D92-4E4D-96B7-B4DB12C10043}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3978F19B-A2C4-48FB-9187-B797D7354667}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FADD600E-ED11-4CC6-8F49-A8BB85A917CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADD600E-ED11-4CC6-8F49-A8BB85A917CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADD600E-ED11-4CC6-8F49-A8BB85A917CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADD600E-ED11-4CC6-8F49-A8BB85A917CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD00ADF1-27B3-434C-A37E-51367D3B6899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD00ADF1-27B3-434C-A37E-51367D3B6899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD00ADF1-27B3-434C-A37E-51367D3B6899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD00ADF1-27B3-434C-A37E-51367D3B6899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{637FA983-1192-448F-9C77-F27F8BCE9C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637FA983-1192-448F-9C77-F27F8BCE9C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637FA983-1192-448F-9C77-F27F8BCE9C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637FA983-1192-448F-9C77-F27F8BCE9C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ADEB0BA-74BA-4D9C-A36A-B234861F3597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ADEB0BA-74BA-4D9C-A36A-B234861F3597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ADEB0BA-74BA-4D9C-A36A-B234861F3597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ADEB0BA-74BA-4D9C-A36A-B234861F3597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{331CA065-7D92-4E4D-96B7-B4DB12C10043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331CA065-7D92-4E4D-96B7-B4DB12C10043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331CA065-7D92-4E4D-96B7-B4DB12C10043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331CA065-7D92-4E4D-96B7-B4DB12C10043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3978F19B-A2C4-48FB-9187-B797D7354667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3978F19B-A2C4-48FB-9187-B797D7354667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3978F19B-A2C4-48FB-9187-B797D7354667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3978F19B-A2C4-48FB-9187-B797D7354667}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D041AC75-5CE3-4D1F-95B1-A5527255F125}
+	EndGlobalSection
+EndGlobal

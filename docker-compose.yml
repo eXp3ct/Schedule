@@ -1,0 +1,71 @@
+version: '3.4'
+
+services:
+  expect.schedule.web:
+    container_name: schedule-web-api
+    image: ${DOCKER_REGISTRY-}expectscheduleweb
+    build:
+      context: .
+      dockerfile: Expect.Schedule.Web/Dockerfile
+    networks:
+        - network
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+        - rabbitmq
+
+  expect.schedule.auth:
+    container_name: schedule-auth
+    image: ${DOCKER_REGISTRY-}expectscheduleauth
+    build:
+      context: .
+      dockerfile: Expect.Schedule.Auth/Dockerfile
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+        - network
+
+  postgres:
+    container_name: schedule-postgres
+    image: postgres:15
+    ports:
+        - 5432:5432 
+    environment:
+        - POSTGRES_USER=root
+        - POSTGRES_PASSWORD=root
+    networks:
+        - network 
+
+  rabbitmq:
+    container_name: schedule-rabbitmq
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    restart: always
+    environment:
+        - RABBITMQ_DEFAULT_USER=root
+        - RABBITMQ_DEFAULT_PASS=root
+    ports:
+        - 8080:15672
+    networks:
+        - network
+
+
+  expect.schedule.scheduleservice:
+    container_name: schedule-schedule-service
+    image: ${DOCKER_REGISTRY-}expectschedulescheduleservice
+    build:
+      context: .
+      dockerfile: Expect.Schedule.ScheduleService/Dockerfile
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+        - network
+    depends_on:
+        - rabbitmq
+        - postgres
+
+networks:
+  network:
+    driver: bridge
+
+

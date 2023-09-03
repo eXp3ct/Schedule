@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "expect.schedule.web": "StartDebugging",
+        "expect.schedule.auth": "StartDebugging"
+      }
+    }
+  }
+}
