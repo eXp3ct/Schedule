@@ -14,4 +14,10 @@ namespace Expect.Schedule.Domain.Models
 		public WeekType Type { get; set; }
 		public List<Day> Days { get; set; }
 	}
+
+	public class TimetableDto
+	{
+		public WeekType Type { get; set; }
+		public List<DayDto> DayDtos { get; set; }
+	}
 }

@@ -17,13 +17,14 @@ namespace Expect.Schedule.ScheduleService.Consumers
 
 		public async Task Consume(ConsumeContext<Timetable> context)
 		{
-			var timetables = await _unitOfWork.TimetableRepository.GetList(1, 10);
+			var timetable = await _unitOfWork.TimetableRepository.Add(context.Message);
+			await _unitOfWork.Save();
 
 			var result = new OperationResult()
 			{
-				Data = timetables
+				Data = timetable
 			};
-
+			_logger.LogInformation("Saved timetable to database");
 			await context.RespondAsync(result);
 		}
 	}

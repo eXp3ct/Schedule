@@ -1,5 +1,6 @@
 ﻿using Expect.Schedule.Data;
 using Expect.Schedule.Domain.Configurations;
+using Expect.Schedule.Domain.Contracts;
 using Expect.Schedule.Domain.Models;
 using Expect.Schedule.ScheduleService.Consumers;
 using MassTransit;
@@ -27,6 +28,7 @@ namespace Expect.Schedule.ScheduleService
 			{
 				x.SetKebabCaseEndpointNameFormatter();
 				x.AddConsumer<TimetableConsumer>();
+				x.AddConsumer<GetListConsumer>();
 				x.UsingRabbitMq((context, config) =>
 				{
 					var rabbitMqConfig = _configuration

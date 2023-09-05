@@ -14,4 +14,9 @@ namespace Expect.Schedule.Domain.Models
 		public string Description { get; set; }
 	}
 	
+	public class AdditionalDto
+	{
+		public string Header { get; set; }
+		public string Description { get; set; }
+	}
 }

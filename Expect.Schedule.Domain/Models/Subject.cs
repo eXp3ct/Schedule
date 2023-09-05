@@ -12,4 +12,9 @@ namespace Expect.Schedule.Domain.Models
 		public Guid Id { get; set; }
 		public string Name { get; set; }
 	}
+
+	public class SubjectDto
+	{
+		public string Name { get; set; }
+	}
 }

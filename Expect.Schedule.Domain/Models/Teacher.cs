@@ -13,4 +13,10 @@ namespace Expect.Schedule.Domain.Models
 		public string Position { get; set; }
 		public string Institute { get; set; }
 	}
+
+    public class  TeacherDto
+    {
+        public string Position { get; set; }
+		public string Institute { get; set; }	
+    }
 }

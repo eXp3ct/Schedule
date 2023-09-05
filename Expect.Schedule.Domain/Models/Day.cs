@@ -13,4 +13,10 @@ namespace Expect.Schedule.Domain.Models
 		public DayOfWeek DayOfWeek { get; set; }
 		public List<Course> Courses { get; set; }
 	}
+
+	public class DayDto
+	{
+		public DayOfWeek DayOfWeek { get; set; }
+		public List<CourseDto> CourseDtos { get; set; }
+	}
 }

@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Expect.Schedule.Infrastructure\Expect.Schedule.Infrastructure.csproj" />
     <ProjectReference Include="..\Expect.Schedule.Domain\Expect.Schedule.Domain.csproj" />
   </ItemGroup>
 

@@ -55,11 +55,19 @@ namespace Expect.Schedule.Data.Repositories
 		public async Task<IEnumerable<Timetable>> GetList(int page, int pageSize)
 		{
 			var entities = await _context.Timetables
-													.Skip((page - 1) * pageSize)
-													.Take(pageSize)
-													.Include(x => x.Days)
-													.ToListAsync();
-
+											.Include(t => t.Days)
+												.ThenInclude(d => d.Courses)
+													.ThenInclude(c => c.Subject)
+											.Include(t => t.Days)
+												.ThenInclude(d => d.Courses)
+													.ThenInclude(c => c.Teacher)
+											.Include(t => t.Days)
+												.ThenInclude(d => d.Courses)
+													.ThenInclude(c => c.Classroom)
+											.Include(t => t.Days)
+												.ThenInclude(d => d.Courses)
+													.ThenInclude(c => c.Additional)
+											.ToListAsync();
 			return entities;
 		}
 

@@ -1,4 +1,5 @@
 ﻿using Expect.Schedule.Domain.Configurations;
+using Expect.Schedule.Infrastructure;
 using Expect.Schedule.Web.Extensions;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -90,6 +91,7 @@ namespace Expect.Schedule.Web
 			});
 
 			AddPolicies(services);
+			services.AddInfrastructure();
 		}
 
 		private static void AddPolicies(IServiceCollection services)

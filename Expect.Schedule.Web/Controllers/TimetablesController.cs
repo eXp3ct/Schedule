@@ -1,7 +1,8 @@
-﻿using Expect.Schedule.Domain.Enums;
-using Expect.Schedule.Domain.Models;
+﻿using Expect.Schedule.Domain.Contracts;
 using Expect.Schedule.Domain.Results;
-using MassTransit;
+using Expect.Schedule.Infrastructure.Commands.Producing.AddTimetable;
+using Expect.Schedule.Infrastructure.Commands.Producing.GetListTimetable;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,35 +16,50 @@ namespace Expect.Schedule.Web.Controllers
 	[Authorize("schedule")]
 	public class TimetablesController : ControllerBase
 	{
-		private readonly IBus _bus;
+		private readonly IMediator _mediator;
 		private readonly ILogger<TimetablesController> _logger;
 
-		public TimetablesController(IBus bus, ILogger<TimetablesController> logger)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="bus"></param>
+		/// <param name="logger"></param>
+		public TimetablesController(ILogger<TimetablesController> logger, IMediator mediator)
 		{
-			_bus = bus;
 			_logger = logger;
+			_mediator = mediator;
 		}
 
+		/// <summary>
+		/// Добавление расписания
+		/// </summary>
+		/// <param name="dto">Информация о расписания</param>
+		/// <returns></returns>
 		[HttpPost]
-		public async Task<IActionResult> Add()
+		[ProducesResponseType(200, Type = typeof(OperationResult))]
+		public async Task<IActionResult> Add([FromBody] AddTimetableDto dto)
 		{
-			var timetable = new Timetable
-			{
-				Type = WeekType.Even,
-				Id = Guid.NewGuid(),
-				Days = new List<Day>
-				{
-					new Day
-					{
-						Id = Guid.NewGuid(),
-						DayOfWeek = DayOfWeek.Sunday,
-					}
-				}
-			};
+			var query = new AddTimetableQuery(dto);
+			var response = await _mediator.Send(query);
 
-			var respond = await _bus.Request<Timetable, OperationResult>(timetable);
+			return Ok(response);
+		}
 
-			return Ok(respond.Message);
+		/// <summary>
+		/// Получение списка расписания
+		/// </summary>
+		/// <param name="page">Номер страницы</param>
+		/// <param name="pageSize">Размер страницы</param>
+		/// <returns></returns>
+		[HttpGet]
+		[ProducesResponseType(200, Type = typeof(OperationResult))]
+		public async Task<IActionResult> Get(int page, int pageSize)
+		{
+			var query = new GetListTimetableQuery(page, pageSize);
+
+			var reponse = await _mediator.Send(query);
+
+			return Ok(reponse);
 		}
 	}
 }
