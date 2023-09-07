@@ -18,10 +18,18 @@ namespace Expect.Schedule.ScheduleService.Consumers
 		{
 			var list = await _unitOfWork.TimetableRepository.GetList(context.Message.Page, context.Message.PageSize);
 
-			var result = new OperationResult
+			var result = default(OperationResult);
+
+			if(list == null)
 			{
-				Data = list
-			};
+				result = new OperationResult(null, false);
+
+				await context.RespondAsync(result);
+
+				return;
+			}
+
+			result = new OperationResult(list, true);
 
 			await context.RespondAsync(result);
 		}

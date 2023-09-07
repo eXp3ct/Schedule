@@ -11,6 +11,8 @@ services:
         - network
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+        - 5051:80 
     depends_on:
         - rabbitmq
 
@@ -22,6 +24,8 @@ services:
       dockerfile: Expect.Schedule.Auth/Dockerfile
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+        - 5151:80  
     networks:
         - network
 

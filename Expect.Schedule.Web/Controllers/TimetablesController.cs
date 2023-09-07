@@ -2,6 +2,7 @@
 using Expect.Schedule.Domain.Results;
 using Expect.Schedule.Infrastructure.Commands.Producing.AddTimetable;
 using Expect.Schedule.Infrastructure.Commands.Producing.GetListTimetable;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +23,8 @@ namespace Expect.Schedule.Web.Controllers
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="bus"></param>
 		/// <param name="logger"></param>
+		/// <param name="mediator"></param>
 		public TimetablesController(ILogger<TimetablesController> logger, IMediator mediator)
 		{
 			_logger = logger;
@@ -42,7 +43,10 @@ namespace Expect.Schedule.Web.Controllers
 			var query = new AddTimetableQuery(dto);
 			var response = await _mediator.Send(query);
 
-			return Ok(response);
+			if(response.IsSuccess)
+				return Ok(response);
+
+			return BadRequest(response);
 		}
 
 		/// <summary>
@@ -57,9 +61,12 @@ namespace Expect.Schedule.Web.Controllers
 		{
 			var query = new GetListTimetableQuery(page, pageSize);
 
-			var reponse = await _mediator.Send(query);
+			var response = await _mediator.Send(query);
 
-			return Ok(reponse);
+			if (response.IsSuccess)
+				return Ok(response);
+
+			return BadRequest(response);
 		}
 	}
 }

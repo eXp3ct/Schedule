@@ -11,7 +11,7 @@ namespace Expect.Schedule.Data.UnitOfWorks
 	public class UnitOfWork : IDisposable
 	{
 		private readonly IAppDbContext _context;
-		private TimetableRepository _timetableRepository;
+		private TimetableRepository? _timetableRepository;
 
 		public TimetableRepository TimetableRepository
 		{

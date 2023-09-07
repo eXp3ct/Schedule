@@ -1,5 +1,6 @@
 ﻿using Expect.Schedule.Domain.Configurations;
 using Expect.Schedule.Infrastructure;
+using Expect.Schedule.Infrastructure.Middlewares;
 using Expect.Schedule.Web.Extensions;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -40,7 +41,7 @@ namespace Expect.Schedule.Web
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
-
+			//app.UseMiddleware<ExceptionHandlingMiddleware>();
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();

@@ -30,7 +30,6 @@ namespace Expect.Schedule.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-			//modelBuilder.SeedData();
 			base.OnModelCreating(modelBuilder);
 		}
 	}

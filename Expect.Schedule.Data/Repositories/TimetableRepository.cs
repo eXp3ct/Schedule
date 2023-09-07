@@ -67,6 +67,8 @@ namespace Expect.Schedule.Data.Repositories
 											.Include(t => t.Days)
 												.ThenInclude(d => d.Courses)
 													.ThenInclude(c => c.Additional)
+											.Skip((page - 1) * pageSize)
+											.Take(pageSize)
 											.ToListAsync();
 			return entities;
 		}
